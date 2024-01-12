@@ -1,7 +1,7 @@
-﻿Public Class Form1
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+﻿Imports System.IO
 
-    End Sub
+Public Class Form1
+    Dim records(50) As String
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         field1.Text = ""
@@ -34,5 +34,13 @@
 
     Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
         PictureBox1.Load(OpenFileDialog1.FileName)
+    End Sub
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If File.Exists("data.txt") Then
+            Dim inFile As New StreamReader("data.txt")
+            records(0) = inFile.ReadLine
+            records(1) = inFile.ReadLine
+            inFile.Close()
+        End If
     End Sub
 End Class
