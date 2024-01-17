@@ -87,6 +87,7 @@ Public Class Form1
         If current > -1 Then
             current = current + 1
             showrecord(current)
+
         End If
     End Sub
 End Class
